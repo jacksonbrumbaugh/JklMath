@@ -1,15 +1,17 @@
 <# Metadata
   CreatedBy : Jackson Brumbaugh
   CreatedOn : 2022-09-14
-  Version : 20220914-A
+  Version : 20221023-A
 #>
 
 $ModuleHome = $PSScriptRoot
+$ModuleName = Split-Path $ModuleHome -Leaf
 
 $ModuleDirs = @(
   @{ Export = $false ; Name = "HelperCmds"   }
   @{ Export = $true  ; Name = "MainCmds"     }
   @{ Export = $true  ; Name = "UnderDevCmds" }
+  @{ Export = $true  ; Name = "Testers" }
 )
 
 $DirsToLoad = $ModuleDirs.Name
@@ -35,7 +37,7 @@ foreach ( $Dir in $DirsToLoad ) {
 
     }
   } else {
-    Write-Warning "Failed to locate the $Dir directory in the JklScryfall PowerShell module"
+    Write-Warning "Failed to locate the $Dir directory in the $ModuleName PowerShell module"
   }
 
 } # End block:foreach Dir in DirsToLoad

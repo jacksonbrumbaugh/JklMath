@@ -26,7 +26,7 @@ function Test-Prime ( [int]$Number ) {
   if ( $Number -in (0, 1) ) {
     $Result = $false
 
-    Return $Result
+    Write-Output $Result
   }
 
   $PrimesList = @(2)
