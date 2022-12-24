@@ -1,16 +1,15 @@
 <# Metadata
   CreatedBy : Jackson Brumbaugh
   CreatedOn : 2022-09-14
-  Version : 20221023-A
+  Version : 2022Dec24-A
 #>
 
 $ModuleHome = $PSScriptRoot
 $ModuleName = Split-Path $ModuleHome -Leaf
 
 $ModuleDirs = @(
-  @{ Export = $false ; Name = "HelperCmds"   }
-  @{ Export = $true  ; Name = "MainCmds"     }
-  @{ Export = $true  ; Name = "UnderDevCmds" }
+  @{ Export = $false ; Name = "HelperCmds" }
+  @{ Export = $true  ; Name = "MainCmds"   }
   @{ Export = $true  ; Name = "Testers" }
 )
 
