@@ -4,7 +4,7 @@ Calculates either the population (default) or sample standard deviation of a dat
 
 .NOTES
 Created by Jackson Brumabugh on 2022.10.23
-VersionCode: 20221023-D
+VersionCode: 23Jan31-A
 #>
 function Get-StandardDeviation {
   [CmdletBinding()]
@@ -19,12 +19,14 @@ function Get-StandardDeviation {
     [float[]]
     $Data,
 
+    # Flag to use if the data is a sample from a population
     [Parameter(
       ValueFromPipelineByPropertyName
     )]
     [Alias("S", "Sam", "Samp")]
     [switch]
     $Sample
+
   ) # End block:param
 
   process {
@@ -32,7 +34,7 @@ function Get-StandardDeviation {
       if ( $Value -eq 0 -or $Value -as [int] ) {
         $Value
       } else {
-        Write-Warning "$Value is NaN"
+        Write-Warning "Excluding the value $Value as NaN"
       }
     }
 
@@ -44,6 +46,13 @@ function Get-StandardDeviation {
     }
 
     $Denominator = if ( $Sample ) {
+      if ( $DataSize -eq 1 ) {
+        $ErrorMsg = "Not enough data points were given to run as a sample analysis. "
+        $ErrorMsg += "More than 1 sample data is required. "
+        Write-Error $ErrorMsg
+        continue
+      }
+
       $DataSize - 1
     } else {
       $DataSize
@@ -69,7 +78,7 @@ function Get-StandardDeviation {
 
 } # End function
 
-$Aliases = ("StdDev", "Get-StdDev")
+$Aliases = ("SD", "StdDev", "Get-StdDev")
 foreach ( $Alias in $Aliases ) {
   Set-Alias -Value Get-StandardDeviation -Name $Alias
   Export-ModuleMember -Alias $Alias
