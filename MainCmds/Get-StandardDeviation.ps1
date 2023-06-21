@@ -4,7 +4,7 @@ Calculates either the population (default) or sample standard deviation of a dat
 
 .NOTES
 Created by Jackson Brumabugh on 2022.10.23
-VersionCode: 23Jan31-A
+VersionCode: 2023Jun21-A
 #>
 function Get-StandardDeviation {
   [CmdletBinding()]
@@ -31,8 +31,8 @@ function Get-StandardDeviation {
 
   process {
     $ValidData = foreach ( $Value in $Data ) {
-      if ( $Value -eq 0 -or $Value -as [int] ) {
-        $Value
+      if ( $Value -eq 0 -or $Value -as [float] ) {
+        $Value -as [float]
       } else {
         Write-Warning "Excluding the value $Value as NaN"
       }
