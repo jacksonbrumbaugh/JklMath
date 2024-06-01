@@ -1,0 +1,197 @@
+function Find-ratio ( $Length, $Width, $Ratio = "16:9" ) {
+$RatioNumberArray = $Ratio.split( ":" )
+
+$LargeRatioNumber = [math]::Max( $RatioNumberArray )
+$SmallRatioNumber = [math]::Min( $RatioNumberArray )
+
+$DimensionArray = @(
+$Length,
+$Width
+)
+
+$LargeDimension = [math]::Max( $DimensionArray )
+$SmallDimension = [math]::Min( $DimensionArray )
+
+$LargeProportion = $LargeDimension / $LargeRatioNumber
+$SmallProportion = $SmallDimension / $SmallRatioNumber
+
+$ScaledDimensionOutput = [PSCustomObject]@{
+Long = 0
+Short = 0
+}
+
+$Scale = if ( $LargeProportion < $SmallProportion ) {
+[math]::Floor( $LargeProportion )
+} else {
+[math]::Floor( $SmallProportion )
+}
+
+$ScaledDimensionOutput.Long = $LargeRatioNumber * $Scale
+$ScaledDimensionOutput.Short = $SmallRatioNumber * $Scale
+
+Write-Output $ScaledDimensionOutput
+
+}
+function Find-ratio ( $Length, $Width, $Ratio = "16:9" ) {
+$RatioNumberArray = $Ratio.split( ":" )
+
+$LargeRatioNumber = [math]::Max( $RatioNumberArray )
+$SmallRatioNumber = [math]::Min( $RatioNumberArray )
+
+$DimensionArray = @(
+$Length,
+$Width
+)
+
+$LargeDimension = [math]::Max( $DimensionArray )
+$SmallDimension = [math]::Min( $DimensionArray )
+
+$LargeProportion = $LargeDimension / $LargeRatioNumber
+$SmallProportion = $SmallDimension / $SmallRatioNumber
+
+$ScaledDimensionOutput = [PSCustomObject]@{
+Long = 0
+Short = 0
+}
+
+$Scale = if ( $LargeProportion -lt $SmallProportion ) {
+[math]::Floor( $LargeProportion )
+} else {
+[math]::Floor( $SmallProportion )
+}
+
+$ScaledDimensionOutput.Long = $LargeRatioNumber * $Scale
+$ScaledDimensionOutput.Short = $SmallRatioNumber * $Scale
+
+Write-Output $ScaledDimensionOutput
+
+}
+Find-Ratio 1920 885
+"16x9".split("x")
+"16:9".split(":")
+[math]::Max("16:9".split(":"))
+[math]::Max(("16:9".split(":")))
+"16:9".split(":") | Measure -Max | Select -Expand Maximum
+function Find-ratio ( $Length, $Width, $Ratio = "16:9" ) {
+$RatioNumberArray = $Ratio.split( ":" )
+
+$LargeRatioNumber = [math]::Max( $RatioNumberArray )
+$SmallRatioNumber = [math]::Min( $RatioNumberArray )
+
+$DimensionArray = @(
+$Length,
+$Width
+)
+
+$LargeDimension = [math]::Max( $DimensionArray )
+$SmallDimension = [math]::Min( $DimensionArray )
+
+$LargeProportion = $LargeDimension / $LargeRatioNumber
+$SmallProportion = $SmallDimension / $SmallRatioNumber
+
+$ScaledDimensionOutput = [PSCustomObject]@{
+Long = 0
+Short = 0
+}
+
+$Scale = if ( $LargeProportion -lt $SmallProportion ) {
+[math]::Floor( $LargeProportion )
+} else {
+[math]::Floor( $SmallProportion )
+}
+
+$ScaledDimensionOutput.Long = $LargeRatioNumber * $Scale
+$ScaledDimensionOutput.Short = $SmallRatioNumber * $Scale
+
+Write-Output $ScaledDimensionOutput
+
+}
+function Find-ratio ( $Length, $Width, $Ratio = "16:9" ) {
+$RatioNumberArray = $Ratio.split( ":" )
+
+$LargeRatioNumber = ($RatioNumberArray | Measure -Max).Maximum
+$SmallRatioNumber = ($RatioNumberArray | Measure -Min).Minimum
+
+$DimensionArray = @(
+$Length,
+$Width
+)
+
+$LargeDimension = ($DimensionArray | Measure -Max).Maximum
+$SmallDimension = ($DimensionArray | Measure -Min).Minimum
+
+$LargeProportion = $LargeDimension / $LargeRatioNumber
+$SmallProportion = $SmallDimension / $SmallRatioNumber
+
+$ScaledDimensionOutput = [PSCustomObject]@{
+Long = 0
+Short = 0
+}
+
+$Scale = if ( $LargeProportion -lt $SmallProportion ) {
+[math]::Floor( $LargeProportion )
+} else {
+[math]::Floor( $SmallProportion )
+}
+
+$ScaledDimensionOutput.Long = $LargeRatioNumber * $Scale
+$ScaledDimensionOutput.Short = $SmallRatioNumber * $Scale
+
+Write-Output $ScaledDimensionOutput
+
+}
+Find-Ratio 1920 885
+885 / 9
+98 * 9
+98*16
+function Find-CropSize ( $Length, $Width, $Ratio = "16:9" ) {
+$RatioNumberArray = $Ratio.split( ":" )
+
+$LargeRatioNumber = ($RatioNumberArray | Measure -Max).Maximum
+$SmallRatioNumber = ($RatioNumberArray | Measure -Min).Minimum
+
+$DimensionArray = @(
+$Length,
+$Width
+)
+
+$LargeDimension = ($DimensionArray | Measure -Max).Maximum
+$SmallDimension = ($DimensionArray | Measure -Min).Minimum
+
+$LargeProportion = $LargeDimension / $LargeRatioNumber
+$SmallProportion = $SmallDimension / $SmallRatioNumber
+
+$ScaledDimensionOutput = [PSCustomObject]@{
+Long = 0
+Short = 0
+}
+
+$Scale = if ( $LargeProportion -lt $SmallProportion ) {
+[math]::Floor( $LargeProportion )
+} else {
+[math]::Floor( $SmallProportion )
+}
+
+$ScaledDimensionOutput.Long = $LargeRatioNumber * $Scale
+$ScaledDimensionOutput.Short = $SmallRatioNumber * $Scale
+
+Write-Output $ScaledDimensionOutput
+
+}
+Find-Ratio 1920 885 -Ratio "9:16"
+dir
+to Code
+dir
+to Power*
+dir
+to MyM*
+dir
+to JklMath
+dir
+to Test*
+dir
+u
+to ..
+dir
+md Dev
+to Dev
